@@ -21,7 +21,7 @@
 
 Meteor.startup(function () {
   Deps.autorun(function () {
-    if (!Meteor.userId()) {
+    if (!Meteor.userId() && !Meteor.loggingIn()) {
       // Accounts._setLoggingIn is a semi-private function, but it's also used in accounts-password.
       Accounts._setLoggingIn(true);
       HTTP.get("/.sandstorm-credentials", function (error, result) {
